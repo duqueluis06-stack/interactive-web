@@ -1,183 +1,196 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Interactive Lux Web</title>
+<meta charset="UTF-8">
+<title>Demo Web Premium</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #0f2027, #000);
-      color: white;
-      text-align: center;
-      transition: 0.6s ease;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  transition: 0.5s;
+  background: linear-gradient(135deg, #0f2027, #203a43, #000);
+}
 
-    .hero {
-      padding: 100px 20px;
-    }
+/* NAV */
+nav {
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
-    }
+nav button {
+  background: transparent;
+  border: 1px solid #0ff;
+  color: #0ff;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 8px;
+}
 
-    .subtitle {
-      opacity: 0.7;
-      font-size: 18px;
-      color: #aaa;
-    }
+nav button:hover {
+  background: #0ff;
+  color: black;
+}
 
-    .section {
-      padding: 60px 20px;
-    }
+/* SECCIONES */
+.section {
+  display: none;
+  padding: 80px 20px;
+}
 
-    .card {
-      margin: 20px auto;
-      max-width: 650px;
-      padding: 20px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid #222;
-    }
+.active {
+  display: block;
+}
 
-    .neon-btn {
-      margin-top: 25px;
-      padding: 14px 28px;
-      font-size: 16px;
-      color: #0ff;
-      background: transparent;
-      border: 2px solid #0ff;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 10px #0ff;
-    }
+h1 {
+  font-size: 42px;
+  text-shadow: 0 0 10px #0ff;
+}
 
-    .neon-btn:hover {
-      background: #0ff;
-      color: black;
-      box-shadow: 0 0 25px #0ff, 0 0 50px #0ff;
-    }
+.card {
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+}
 
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
+/* BOTÓN */
+.neon-btn {
+  padding: 12px 25px;
+  border: 2px solid #0ff;
+  background: transparent;
+  color: #0ff;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 20px;
+}
 
-    .tab {
-      padding: 10px 15px;
-      border: 1px solid #0ff;
-      background: transparent;
-      color: #0ff;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
+.neon-btn:hover {
+  background: #0ff;
+  color: black;
+}
 
-    .tab:hover {
-      background: #0ff;
-      color: black;
-    }
-  </style>
+/* COLORES */
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>⚡ Webs Interactivas Lux</h1>
-    <p class="subtitle">Diseño moderno · Animación · Experiencia visual premium</p>
+<!-- NAV -->
+<nav>
+  <button onclick="showTab('home')">Inicio</button>
+  <button onclick="showTab('demo')">Demo</button>
+  <button onclick="showTab('style')">Estilo</button>
+  <button onclick="showTab('contact')">Contacto</button>
+</nav>
 
-    <button class="neon-btn" onclick="alert('🚀 Solicitud enviada')">
-      Solicitar proyecto
-    </button>
+<!-- HOME -->
+<div id="home" class="section active">
+  <h1>⚡ Webs Interactivas Premium</h1>
+  <p>Diseño moderno · Animación · Experiencia visual</p>
+
+  <button class="neon-btn" onclick="showTab('demo')">
+    Ver demo
+  </button>
+</div>
+
+<!-- DEMO -->
+<div id="demo" class="section">
+  <h1>🧠 Demo interactiva</h1>
+
+  <div class="card" id="demoText">
+    Haz clic abajo
   </div>
 
-  <!-- SERVICIOS -->
-  <div class="section">
-    <h2>💼 Servicios</h2>
+  <button class="neon-btn" onclick="demo('A')">Diseño</button>
+  <button class="neon-btn" onclick="demo('B')">Animación</button>
+  <button class="neon-btn" onclick="demo('C')">Experiencia</button>
+</div>
 
-    <div class="card">Webs modernas para negocio o marca personal</div>
-    <div class="card">Interfaces interactivas con diseño neón</div>
-    <div class="card">Experiencia visual enfocada en impacto</div>
+<!-- ESTILO -->
+<div id="style" class="section">
+  <h1>🎨 Personaliza tu estilo</h1>
+
+  <div class="colors">
+    <div class="color" style="background:#00ffff" onclick="setColor('#00ffff')"></div>
+    <div class="color" style="background:#a020f0" onclick="setColor('#a020f0')"></div>
+    <div class="color" style="background:#00ff88" onclick="setColor('#00ff88')"></div>
+    <div class="color" style="background:#ffffff; border:1px solid #ccc" onclick="setColor('#ffffff')"></div>
+    <div class="color" style="background:#ff3b3b" onclick="setColor('#ff3b3b')"></div>
   </div>
 
-  <!-- DEMO -->
-  <div class="section">
-    <h2>🧠 Demo interactiva</h2>
-
-    <div class="tabs">
-      <button class="tab" onclick="show('A')">Diseño</button>
-      <button class="tab" onclick="show('B')">Animación</button>
-      <button class="tab" onclick="show('C')">Experiencia</button>
-    </div>
-
-    <div class="card" id="output">
-      Selecciona una opción
-    </div>
+  <div class="card" id="styleText">
+    Elige un color
   </div>
+</div>
 
-  <!-- ESTILOS -->
-  <div class="section">
-    <h2>🎛️ Estilos visuales</h2>
+<!-- CONTACTO -->
+<div id="contact" class="section">
+  <h1>📩 Contacto</h1>
 
-    <div class="tabs">
-      <button class="tab" onclick="theme('neon')">Neón</button>
-      <button class="tab" onclick="theme('dark')">Oscuro</button>
-      <button class="tab" onclick="theme('clean')">Minimal</button>
-    </div>
+  <p>Solicita tu web personalizada</p>
 
-    <div class="card" id="themeText">
-      Prueba un estilo visual
-    </div>
-  </div>
+  <a href="mailto:TUEMAIL@gmail.com">
+    <button class="neon-btn">📧 Email</button>
+  </a>
 
-  <!-- CONTACTO -->
-  <div class="section">
-    <h2>📩 Contacto</h2>
+  <br><br>
 
-    <button class="neon-btn" onclick="alert('📨 Presupuesto enviado')">
-      Pedir presupuesto
-    </button>
-  </div>
+  <a href="https://wa.me/33XXXXXXXXX" target="_blank">
+    <button class="neon-btn">💬 WhatsApp</button>
+  </a>
+</div>
 
-  <script>
-    function show(type) {
-      let text = "";
+<script>
 
-      if(type === "A") text = "Diseños modernos adaptados a tu marca.";
-      if(type === "B") text = "Animaciones suaves y efectos visuales.";
-      if(type === "C") text = "Experiencia optimizada a su elección.";
+/* CAMBIO DE PESTAÑAS */
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-      document.getElementById("output").innerText = text;
-    }
+/* DEMO */
+function demo(type) {
+  let text = "";
+  if(type === "A") text = "Diseño moderno adaptado a tu marca.";
+  if(type === "B") text = "Animaciones fluidas y visuales.";
+  if(type === "C") text = "Experiencia optimizada para clientes.";
 
-    function theme(mode) {
-      let body = document.body;
-      let text = document.getElementById("themeText");
+  document.getElementById("demoText").innerText = text;
+}
 
-      if(mode === "neon") {
-        body.style.background = "radial-gradient(circle at top, #001a1a, #000)";
-        text.innerText = "⚡ Estilo neón activado";
-      }
+/* COLOR */
+function setColor(color) {
+  document.body.style.background =
+    "linear-gradient(135deg, " + color + "55, #000)";
 
-      if(mode === "dark") {
-        body.style.background = "#000";
-        text.innerText = "🌑 Estilo oscuro activado";
-      }
+  document.getElementById("styleText").innerText =
+    "Color seleccionado: " + color;
+}
 
-      if(mode === "clean") {
-        body.style.background = "#111";
-        text.innerText = "🧼 Estilo minimal activado";
-      }
-    }
-  </script>
+</script>
 
 </body>
 </html>
