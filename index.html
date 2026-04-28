@@ -7,10 +7,11 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: radial-gradient(circle at top, #0a0a12, #000);
       color: white;
       text-align: center;
+      transition: 0.5s;
     }
 
     .hero {
@@ -27,10 +28,23 @@
       font-size: 18px;
     }
 
+    .section {
+      padding: 60px 20px;
+    }
+
+    .card {
+      margin: 20px auto;
+      max-width: 650px;
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid #222;
+    }
+
     /* NEON BUTTON */
     .neon-btn {
-      margin-top: 30px;
-      padding: 15px 30px;
+      margin-top: 25px;
+      padding: 14px 28px;
       font-size: 16px;
       color: #0ff;
       background: transparent;
@@ -47,24 +61,12 @@
       box-shadow: 0 0 25px #0ff, 0 0 50px #0ff;
     }
 
-    .section {
-      padding: 60px 20px;
-    }
-
-    .card {
-      margin: 20px auto;
-      max-width: 600px;
-      padding: 20px;
-      border: 1px solid #222;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
-    }
-
     .tabs {
       display: flex;
       justify-content: center;
       gap: 10px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
 
     .tab {
@@ -74,6 +76,7 @@
       color: #0ff;
       cursor: pointer;
       border-radius: 8px;
+      transition: 0.3s;
     }
 
     .tab:hover {
@@ -90,7 +93,7 @@
     <h1>⚡ Webs Interactivas Lux</h1>
     <p class="subtitle">Diseño moderno · Animación · Experiencia visual premium</p>
 
-    <button class="neon-btn" onclick="alert('🚀 Contacto iniciado')">
+    <button class="neon-btn" onclick="alert('🚀 Solicitud enviada')">
       Solicitar proyecto
     </button>
   </div>
@@ -99,20 +102,12 @@
   <div class="section">
     <h2>💼 Servicios</h2>
 
-    <div class="card">
-      Webs modernas para negocio, marca o proyecto personal.
-    </div>
-
-    <div class="card">
-      Interfaces interactivas con diseño neón y animaciones suaves.
-    </div>
-
-    <div class="card">
-      Experiencia visual pensada para impactar.
-    </div>
+    <div class="card">Webs modernas para negocio o marca personal</div>
+    <div class="card">Interfaces interactivas con diseño neón</div>
+    <div class="card">Experiencia visual enfocada en impacto</div>
   </div>
 
-  <!-- INTERACTIVO -->
+  <!-- DEMO INTERACTIVA -->
   <div class="section">
     <h2>🧠 Demo interactiva</h2>
 
@@ -127,15 +122,31 @@
     </div>
   </div>
 
+  <!-- ESTILOS VISUALES -->
+  <div class="section">
+    <h2>🎛️ Estilos visuales</h2>
+
+    <div class="tabs">
+      <button class="tab" onclick="theme('neon')">Neón</button>
+      <button class="tab" onclick="theme('dark')">Oscuro</button>
+      <button class="tab" onclick="theme('clean')">Minimal</button>
+    </div>
+
+    <div class="card" id="themeText">
+      Prueba un estilo visual
+    </div>
+  </div>
+
   <!-- CONTACTO -->
   <div class="section">
     <h2>📩 Contacto</h2>
 
-    <button class="neon-btn" onclick="alert('Solicitud enviada')">
+    <button class="neon-btn" onclick="alert('📨 Solicitud de presupuesto enviada')">
       Pedir presupuesto
     </button>
   </div>
 
+  <!-- SCRIPT ÚNICO -->
   <script>
     function show(type) {
       let text = "";
@@ -146,43 +157,27 @@
 
       document.getElementById("output").innerText = text;
     }
+
+    function theme(mode) {
+      let body = document.body;
+      let text = document.getElementById("themeText");
+
+      if(mode === "neon") {
+        body.style.background = "radial-gradient(circle at top, #001a1a, #000)";
+        text.innerText = "⚡ Estilo neón: moderno y llamativo";
+      }
+
+      if(mode === "dark") {
+        body.style.background = "#000";
+        text.innerText = "🌑 Estilo oscuro: elegante y profesional";
+      }
+
+      if(mode === "clean") {
+        body.style.background = "#111";
+        text.innerText = "🧼 Estilo minimal: limpio y corporativo";
+      }
+    }
   </script>
-
-  <div class="section">
-  <h2>🎛️ Elige tu estilo visual</h2>
-
-  <div class="tabs">
-    <button class="tab" onclick="theme('neon')">Neón</button>
-    <button class="tab" onclick="theme('dark')">Oscuro</button>
-    <button class="tab" onclick="theme('clean')">Minimal</button>
-  </div>
-
-  <div class="card" id="themeText">
-    Selecciona un estilo para ver la experiencia
-  </div>
-</div>
-
-<script>
-function theme(mode) {
-  let body = document.body;
-  let text = document.getElementById("themeText");
-
-  if(mode === "neon") {
-    body.style.background = "radial-gradient(circle at top, #001a1a, #000)";
-    text.innerText = "⚡ Estilo neón activado: moderno y llamativo";
-  }
-
-  if(mode === "dark") {
-    body.style.background = "#000";
-    text.innerText = "🌑 Estilo oscuro: elegante y profesional";
-  }
-
-  if(mode === "clean") {
-    body.style.background = "#111";
-    text.innerText = "🧼 Estilo minimal: limpio y corporativo";
-  }
-}
-</script>
 
 </body>
 </html>
