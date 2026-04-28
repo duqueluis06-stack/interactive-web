@@ -8,10 +8,10 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #0a0a12, #000);
+      background: radial-gradient(circle at top, #0f2027, #000);
       color: white;
       text-align: center;
-      transition: 0.5s;
+      transition: 0.6s ease;
     }
 
     .hero {
@@ -21,11 +21,13 @@
     h1 {
       font-size: 48px;
       margin-bottom: 10px;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
     }
 
     .subtitle {
       opacity: 0.7;
       font-size: 18px;
+      color: #aaa;
     }
 
     .section {
@@ -41,7 +43,6 @@
       border: 1px solid #222;
     }
 
-    /* NEON BUTTON */
     .neon-btn {
       margin-top: 25px;
       padding: 14px 28px;
@@ -88,8 +89,6 @@
 
 <body>
 
-  <h2 onclick="alert('JS funciona 👌')">TEST CLICK</h2>
-
   <!-- HERO -->
   <div class="hero">
     <h1>⚡ Webs Interactivas Lux</h1>
@@ -109,7 +108,7 @@
     <div class="card">Experiencia visual enfocada en impacto</div>
   </div>
 
-  <!-- DEMO INTERACTIVA -->
+  <!-- DEMO -->
   <div class="section">
     <h2>🧠 Demo interactiva</h2>
 
@@ -124,7 +123,7 @@
     </div>
   </div>
 
-  <!-- ESTILOS VISUALES -->
+  <!-- ESTILOS -->
   <div class="section">
     <h2>🎛️ Estilos visuales</h2>
 
@@ -143,19 +142,18 @@
   <div class="section">
     <h2>📩 Contacto</h2>
 
-    <button class="neon-btn" onclick="alert('📨 Solicitud de presupuesto enviada')">
+    <button class="neon-btn" onclick="alert('📨 Presupuesto enviado')">
       Pedir presupuesto
     </button>
   </div>
 
-  <!-- SCRIPT ÚNICO -->
   <script>
     function show(type) {
       let text = "";
 
       if(type === "A") text = "Diseños modernos adaptados a tu marca.";
       if(type === "B") text = "Animaciones suaves y efectos visuales.";
-      if(type === "C") text = "Experiencia optimizada para clientes reales.";
+      if(type === "C") text = "Experiencia optimizada a su elección.";
 
       document.getElementById("output").innerText = text;
     }
@@ -166,17 +164,17 @@
 
       if(mode === "neon") {
         body.style.background = "radial-gradient(circle at top, #001a1a, #000)";
-        text.innerText = "⚡ Estilo neón: moderno y llamativo";
+        text.innerText = "⚡ Estilo neón activado";
       }
 
       if(mode === "dark") {
         body.style.background = "#000";
-        text.innerText = "🌑 Estilo oscuro: elegante y profesional";
+        text.innerText = "🌑 Estilo oscuro activado";
       }
 
       if(mode === "clean") {
         body.style.background = "#111";
-        text.innerText = "🧼 Estilo minimal: limpio y corporativo";
+        text.innerText = "🧼 Estilo minimal activado";
       }
     }
   </script>
