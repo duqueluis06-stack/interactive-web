@@ -2,48 +2,151 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Interactive Web Demo</title>
+  <title>Interactive Lux Web</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: radial-gradient(circle at top, #0a0a12, #000);
+      color: white;
+      text-align: center;
+    }
+
+    .hero {
+      padding: 100px 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      opacity: 0.7;
+      font-size: 18px;
+    }
+
+    /* NEON BUTTON */
+    .neon-btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 16px;
+      color: #0ff;
+      background: transparent;
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .neon-btn:hover {
+      background: #0ff;
+      color: black;
+      box-shadow: 0 0 25px #0ff, 0 0 50px #0ff;
+    }
+
+    .section {
+      padding: 60px 20px;
+    }
+
+    .card {
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #222;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tab {
+      padding: 10px 15px;
+      border: 1px solid #0ff;
+      background: transparent;
+      color: #0ff;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .tab:hover {
+      background: #0ff;
+      color: black;
+    }
+  </style>
 </head>
 
-<body style="margin:0; font-family:Arial; background:#0b0b0f; color:white; text-align:center;">
+<body>
 
   <!-- HERO -->
-  <div style="padding:80px 20px; background:linear-gradient(135deg,#0f0f1a,#1a1a2e);">
-    <h1 style="font-size:40px; margin:0;">⚡ Webs Interactivas Modernas</h1>
-    <p style="font-size:18px; opacity:0.8;">
-      Diseño + Animación + Experiencia visual inmersiva
-    </p>
+  <div class="hero">
+    <h1>⚡ Webs Interactivas Lux</h1>
+    <p class="subtitle">Diseño moderno · Animación · Experiencia visual premium</p>
 
-    <button onclick="alert('Contacto iniciado 👋')" 
-      style="margin-top:20px; padding:12px 20px; font-size:16px; border:none; border-radius:8px; cursor:pointer;">
-      Quiero mi web
-    </button>
-  </div>
-
-  <!-- DEMO VISUAL -->
-  <div style="padding:60px 20px;">
-    <h2>🔥 Demo interactiva</h2>
-
-    <button onclick="this.innerText='💥 Click detectado'"
-      style="padding:15px 25px; font-size:16px; margin-top:20px; cursor:pointer;">
-      Haz clic aquí
+    <button class="neon-btn" onclick="alert('🚀 Contacto iniciado')">
+      Solicitar proyecto
     </button>
   </div>
 
   <!-- SERVICIOS -->
-  <div style="padding:60px 20px; background:#111;">
-    <h2>💼 Qué ofrezco</h2>
-    <p>✔ Webs modernas</p>
-    <p>✔ Animaciones</p>
-    <p>✔ Diseño personalizado</p>
-    <p>✔ Experiencia interactiva</p>
+  <div class="section">
+    <h2>💼 Servicios</h2>
+
+    <div class="card">
+      Webs modernas para negocio, marca o proyecto personal.
+    </div>
+
+    <div class="card">
+      Interfaces interactivas con diseño neón y animaciones suaves.
+    </div>
+
+    <div class="card">
+      Experiencia visual pensada para impactar al cliente.
+    </div>
+  </div>
+
+  <!-- INTERACTIVO -->
+  <div class="section">
+    <h2>🧠 Demo interactiva</h2>
+
+    <div class="tabs">
+      <button class="tab" onclick="show('A')">Diseño</button>
+      <button class="tab" onclick="show('B')">Animación</button>
+      <button class="tab" onclick="show('C')">Experiencia</button>
+    </div>
+
+    <div class="card" id="output">
+      Selecciona una opción
+    </div>
   </div>
 
   <!-- CONTACTO -->
-  <div style="padding:60px 20px;">
+  <div class="section">
     <h2>📩 Contacto</h2>
-    <p>Escríbeme para tu proyecto web</p>
+
+    <button class="neon-btn" onclick="alert('Solicitud enviada')">
+      Pedir presupuesto
+    </button>
   </div>
+
+  <script>
+    function show(type) {
+      let text = "";
+
+      if(type === "A") text = "Diseños modernos adaptados a tu marca.";
+      if(type === "B") text = "Animaciones suaves y efectos visuales.";
+      if(type === "C") text = "Experiencia optimizada para clientes reales.";
+
+      document.getElementById("output").innerText = text;
+    }
+  </script>
 
 </body>
 </html>
