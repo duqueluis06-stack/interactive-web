@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Web Premium</title>
+<title>Web Interactiva Premium</title>
 
 <style>
 
@@ -15,6 +15,25 @@ body {
   background: linear-gradient(135deg, #0f2027, #203a43, #000);
 }
 
+/* 🔴 SALIDA FIJA (NO INTERFIERE NADA) */
+.exit-bar{
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 99999;
+}
+
+.exit-bar a{
+  display:inline-block;
+  padding:8px 14px;
+  border:2px solid #ff3b3b;
+  color:#ff3b3b;
+  text-decoration:none;
+  border-radius:10px;
+  background:rgba(0,0,0,0.6);
+  font-size:13px;
+}
+
 /* NAV */
 nav {
   display: flex;
@@ -23,9 +42,6 @@ nav {
   gap: 10px;
   padding: 10px;
   background: rgba(0,0,0,0.75);
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
 nav button {
@@ -37,24 +53,6 @@ nav button {
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-}
-
-/* 🔴 SALIDA FIJA Y LIMPIA */
-.exit-bar {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 9999;
-}
-
-.exit-bar a {
-  padding: 8px 14px;
-  border: 2px solid #ff3b3b;
-  color: #ff3b3b;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 13px;
-  background: rgba(0,0,0,0.6);
 }
 
 /* SECCIONES */
@@ -82,7 +80,7 @@ h1 {
   border-radius: 10px;
 }
 
-/* BOTONES RGB PRO */
+/* BOTONES RGB */
 .neon-btn {
   width: 90%;
   max-width: 300px;
@@ -95,11 +93,22 @@ h1 {
   font-weight: bold;
   background: linear-gradient(#000, #000) padding-box,
               linear-gradient(90deg, #00ffff, #ff00ff, #00ff88, #00ffff) border-box;
-  transition: 0.3s;
 }
 
-.neon-btn:hover {
-  transform: scale(1.05);
+/* NIVELES */
+.levels {
+  margin: 20px auto;
+  max-width: 700px;
+  text-align: left;
+  padding: 15px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.levels div{
+  margin: 8px 0;
+  padding: 8px;
+  border-left: 3px solid #0ff;
 }
 
 /* COLORES */
@@ -117,17 +126,12 @@ h1 {
   cursor: pointer;
 }
 
-/* DESKTOP */
+/* RESPONSIVE */
 @media(min-width:768px){
-
   h1 { font-size: 42px; }
-
   nav button { flex: none; }
-
   .neon-btn { width: auto; }
-
   .card { max-width: 600px; }
-
 }
 
 </style>
@@ -135,7 +139,7 @@ h1 {
 
 <body>
 
-<!-- 🔴 SALIDA -->
+<!-- 🔴 SALIR -->
 <div class="exit-bar">
   <a href="https://duquemartini.com/index.html">⬅ Salir</a>
 </div>
@@ -143,19 +147,38 @@ h1 {
 <!-- NAV -->
 <nav>
   <button onclick="showTab('home')">Inicio</button>
+  <button onclick="showTab('levels')">Niveles</button>
   <button onclick="showTab('demo')">Demo</button>
-  <button onclick="showTab('style')">Estilo</button>
   <button onclick="showTab('contact')">Contacto</button>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="section active">
-  <h1>⚡ Webs Interactivas a Medida</h1>
-  <p>Diseño moderno · Animación · Experiencia visual</p>
+  <h1>⚡ Web Interactiva a Medida</h1>
+
+  <p>
+    Diseño profesional de páginas web con interacción, animaciones y personalización visual.
+  </p>
 
   <button class="neon-btn" onclick="showTab('demo')">
     Ver demo
   </button>
+</div>
+
+<!-- NIVELES -->
+<div id="levels" class="section">
+  <h1>⚙️ Niveles de Web</h1>
+
+  <div class="levels">
+    <div>🟢 Nivel 1 — Web básica (estructura simple)</div>
+    <div>🟡 Nivel 2 — Web interactiva (botones + animación)</div>
+    <div>🔵 Nivel 3 — Web avanzada (personalización completa)</div>
+    <div>🔴 Nivel 4 — Premium (MP3 / MP4 / sistemas completos)</div>
+  </div>
+
+  <p>
+    Cada nivel define la complejidad, diseño y funcionalidad del proyecto.
+  </p>
 </div>
 
 <!-- DEMO -->
@@ -169,30 +192,23 @@ h1 {
   <button class="neon-btn" onclick="demo('A')">Diseño</button>
   <button class="neon-btn" onclick="demo('B')">Animación</button>
   <button class="neon-btn" onclick="demo('C')">Experiencia</button>
-</div>
-
-<!-- ESTILO -->
-<div id="style" class="section">
-  <h1>🎨 Personalización</h1>
 
   <div class="colors">
     <div class="color" style="background:#00ffff" onclick="setColor('#00ffff')"></div>
     <div class="color" style="background:#a020f0" onclick="setColor('#a020f0')"></div>
     <div class="color" style="background:#00ff88" onclick="setColor('#00ff88')"></div>
-    <div class="color" style="background:#ffffff" onclick="setColor('#ffffff')"></div>
     <div class="color" style="background:#ff3b3b" onclick="setColor('#ff3b3b')"></div>
   </div>
 
-  <div class="card" id="styleText">
-    Elige un color
-  </div>
 </div>
 
 <!-- CONTACTO -->
 <div id="contact" class="section">
-  <h1>📩 Contacto profesional</h1>
+  <h1>📩 Contacto directo</h1>
 
-  <p>Desarrollo de webs interactivas a medida</p>
+  <p>
+    Si te gustó la demo o quieres una web personalizada, puedes contactarme directamente.
+  </p>
 
   <a href="mailto:duqueluis06@gmail.com">
     <button class="neon-btn">📧 Email</button>
@@ -201,6 +217,10 @@ h1 {
   <a href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20interactiva" target="_blank">
     <button class="neon-btn">💬 WhatsApp</button>
   </a>
+
+  <div class="card">
+    📌 Respondo con detalles de precio, nivel y diseño según tu proyecto.
+  </div>
 </div>
 
 <script>
@@ -221,8 +241,6 @@ function demo(type){
 function setColor(color){
   document.body.style.background =
     "linear-gradient(135deg," + color + "55,#000)";
-  document.getElementById("styleText").innerText =
-    "Color seleccionado: " + color;
 }
 
 </script>
