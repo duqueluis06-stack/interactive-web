@@ -3,135 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Interactiva Premium</title>
+<title>Web Interactiva Premium | Luis</title>
 
 <style>
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-  text-align: center;
-  background: linear-gradient(135deg, #0f2027, #203a43, #000);
-}
-
-/* 🔴 SALIDA FIJA (NO INTERFIERE NADA) */
-.exit-bar{
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  z-index: 99999;
-}
-
-.exit-bar a{
-  display:inline-block;
-  padding:8px 14px;
-  border:2px solid #ff3b3b;
-  color:#ff3b3b;
-  text-decoration:none;
-  border-radius:10px;
-  background:rgba(0,0,0,0.6);
-  font-size:13px;
+body{
+  margin:0;
+  font-family:Arial;
+  color:white;
+  text-align:center;
+  background:linear-gradient(135deg,#0f2027,#203a43,#000);
 }
 
 /* NAV */
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  background: rgba(0,0,0,0.75);
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  padding:10px;
+  background:rgba(0,0,0,0.8);
 }
 
-nav button {
-  flex: 1 1 40%;
-  max-width: 150px;
-  background: transparent;
-  border: 1px solid #0ff;
-  color: #0ff;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
+nav button, nav a{
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid #0ff;
+  background:transparent;
+  color:#0ff;
+  cursor:pointer;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* BOTÓN SALIDA DESTACADO */
+.exit{
+  border:1px solid #ff3b3b !important;
+  color:#ff3b3b !important;
 }
 
 /* SECCIONES */
-.section {
-  display: none;
-  padding: 60px 15px;
+.section{
+  display:none;
+  padding:60px 15px;
 }
 
-.active {
-  display: block;
+.active{
+  display:block;
 }
 
 /* TITULOS */
-h1 {
-  font-size: 30px;
-  text-shadow: 0 0 10px #0ff;
+h1{
+  text-shadow:0 0 10px #0ff;
 }
 
 /* CARD */
-.card {
-  margin: 15px auto;
-  max-width: 90%;
-  padding: 15px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
+.card{
+  max-width:600px;
+  margin:15px auto;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
 }
 
-/* BOTONES RGB */
-.neon-btn {
-  width: 90%;
-  max-width: 300px;
-  padding: 12px;
-  margin: 10px;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(#000, #000) padding-box,
-              linear-gradient(90deg, #00ffff, #ff00ff, #00ff88, #00ffff) border-box;
+/* BOTONES */
+.neon-btn{
+  padding:12px;
+  margin:10px;
+  border-radius:10px;
+  border:2px solid #0ff;
+  background:transparent;
+  color:#0ff;
+  cursor:pointer;
 }
 
 /* NIVELES */
-.levels {
-  margin: 20px auto;
-  max-width: 700px;
-  text-align: left;
-  padding: 15px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
+.level{
+  text-align:left;
+  max-width:650px;
+  margin:auto;
+  background:rgba(255,255,255,0.04);
+  padding:15px;
+  border-radius:10px;
+  border:1px solid rgba(0,255,255,0.2);
 }
 
-.levels div{
-  margin: 8px 0;
-  padding: 8px;
-  border-left: 3px solid #0ff;
+.level h3{
+  color:#00ffff;
 }
 
-/* COLORES */
-.colors {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.color {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  cursor: pointer;
+/* CONTACTO */
+.contact{
+  max-width:650px;
+  margin:auto;
+  background:rgba(255,255,255,0.04);
+  padding:15px;
+  border-radius:10px;
 }
 
 /* RESPONSIVE */
 @media(min-width:768px){
-  h1 { font-size: 42px; }
-  nav button { flex: none; }
-  .neon-btn { width: auto; }
-  .card { max-width: 600px; }
+  .neon-btn{width:auto;}
 }
 
 </style>
@@ -139,108 +111,113 @@ h1 {
 
 <body>
 
-<!-- 🔴 SALIR -->
-<div class="exit-bar">
-  <a href="https://duquemartini.com/index.html">⬅ Salir</a>
-</div>
-
-<!-- NAV -->
+<!-- NAV PRINCIPAL -->
 <nav>
-  <button onclick="showTab('home')">Inicio</button>
-  <button onclick="showTab('levels')">Niveles</button>
-  <button onclick="showTab('demo')">Demo</button>
-  <button onclick="showTab('contact')">Contacto</button>
+  <button onclick="show('home')">Inicio</button>
+  <button onclick="show('demo')">Demo</button>
+  <button onclick="show('levels')">Niveles</button>
+  <button onclick="show('contact')">Contacto</button>
+
+  <!-- SALIDA CLARA (SIN SUPERPOSICIÓN) -->
+  <a class="exit" href="https://duquemartini.com/index.html">
+    ⬅ Salir
+  </a>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="section active">
-  <h1>⚡ Web Interactiva a Medida</h1>
+  <h1>⚡ Webs Interactivas a Medida</h1>
 
-  <p>
-    Diseño profesional de páginas web con interacción, animaciones y personalización visual.
-  </p>
-
-  <button class="neon-btn" onclick="showTab('demo')">
-    Ver demo
-  </button>
-</div>
-
-<!-- NIVELES -->
-<div id="levels" class="section">
-  <h1>⚙️ Niveles de Web</h1>
-
-  <div class="levels">
-    <div>🟢 Nivel 1 — Web básica (estructura simple)</div>
-    <div>🟡 Nivel 2 — Web interactiva (botones + animación)</div>
-    <div>🔵 Nivel 3 — Web avanzada (personalización completa)</div>
-    <div>🔴 Nivel 4 — Premium (MP3 / MP4 / sistemas completos)</div>
+  <div class="card">
+    Diseño web moderno, interactivo y adaptable a cualquier proyecto.
+    Experiencia visual + funcionalidad real + personalización total.
   </div>
 
-  <p>
-    Cada nivel define la complejidad, diseño y funcionalidad del proyecto.
-  </p>
+  <button class="neon-btn" onclick="show('demo')">
+    Ver demo
+  </button>
 </div>
 
 <!-- DEMO -->
 <div id="demo" class="section">
   <h1>🧠 Demo interactiva</h1>
 
-  <div class="card" id="demoText">
-    Selecciona una opción
-  </div>
+  <div class="card" id="txt">Selecciona una opción</div>
 
   <button class="neon-btn" onclick="demo('A')">Diseño</button>
   <button class="neon-btn" onclick="demo('B')">Animación</button>
   <button class="neon-btn" onclick="demo('C')">Experiencia</button>
+</div>
 
-  <div class="colors">
-    <div class="color" style="background:#00ffff" onclick="setColor('#00ffff')"></div>
-    <div class="color" style="background:#a020f0" onclick="setColor('#a020f0')"></div>
-    <div class="color" style="background:#00ff88" onclick="setColor('#00ff88')"></div>
-    <div class="color" style="background:#ff3b3b" onclick="setColor('#ff3b3b')"></div>
+<!-- NIVELES -->
+<div id="levels" class="section">
+  <h1>📊 Niveles de desarrollo</h1>
+
+  <div class="level">
+    <h3>Nivel 1 — Básico</h3>
+    Sitio web informativo, estructura limpia, ideal para presentación.
   </div>
 
+  <div class="level">
+    <h3>Nivel 2 — Interactivo</h3>
+    Animaciones, botones dinámicos, navegación avanzada.
+  </div>
+
+  <div class="level">
+    <h3>Nivel 3 — Profesional</h3>
+    Diseño optimizado, secciones múltiples, experiencia UI/UX completa.
+  </div>
+
+  <div class="level">
+    <h3>Nivel 4 — Premium Plus</h3>
+    Integración multimedia (MP4 / MP3), sistemas avanzados, branding completo.
+  </div>
 </div>
 
 <!-- CONTACTO -->
 <div id="contact" class="section">
-  <h1>📩 Contacto directo</h1>
+  <h1>📩 Contacto profesional</h1>
 
-  <p>
-    Si te gustó la demo o quieres una web personalizada, puedes contactarme directamente.
-  </p>
+  <div class="contact">
+    Si te interesa una web personalizada o tienes dudas sobre el proyecto,  
+    puedes contactarme directamente:
 
-  <a href="mailto:duqueluis06@gmail.com">
-    <button class="neon-btn">📧 Email</button>
-  </a>
+    <br><br>
 
-  <a href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20interactiva" target="_blank">
-    <button class="neon-btn">💬 WhatsApp</button>
-  </a>
+    📧 Email: <b>duqueluis06@gmail.com</b><br>
+    📱 WhatsApp Business: disponible para atención directa
 
-  <div class="card">
-    📌 Respondo con detalles de precio, nivel y diseño según tu proyecto.
+    <br><br>
+
+    <a class="neon-btn" href="mailto:duqueluis06@gmail.com">
+      Enviar email
+    </a>
+
+    <a class="neon-btn"
+       href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20a%20medida"
+       target="_blank">
+      WhatsApp
+    </a>
+
+    <p style="opacity:0.7; margin-top:10px;">
+      Respuesta rápida · Proyectos personalizados · Desarrollo a medida
+    </p>
   </div>
 </div>
 
 <script>
 
-function showTab(id){
+function show(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-function demo(type){
-  let text="";
-  if(type==="A") text="Diseño moderno adaptado.";
-  if(type==="B") text="Animaciones fluidas.";
-  if(type==="C") text="Experiencia optimizada.";
-  document.getElementById("demoText").innerText=text;
-}
-
-function setColor(color){
-  document.body.style.background =
-    "linear-gradient(135deg," + color + "55,#000)";
+function demo(t){
+  let msg="";
+  if(t==="A") msg="Diseño moderno aplicado";
+  if(t==="B") msg="Animaciones fluidas activas";
+  if(t==="C") msg="Experiencia optimizada UX/UI";
+  document.getElementById("txt").innerText=msg;
 }
 
 </script>
