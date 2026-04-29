@@ -13,7 +13,6 @@ body {
   color: white;
   text-align: center;
   background: linear-gradient(135deg, #0f2027, #203a43, #000);
-  transition: 0.5s;
 }
 
 /* NAV */
@@ -23,7 +22,7 @@ nav {
   justify-content: center;
   gap: 10px;
   padding: 10px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
 }
 
 nav button {
@@ -37,6 +36,23 @@ nav button {
   cursor: pointer;
 }
 
+/* BOTÓN SALIDA PRO */
+.exit-bar {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
+}
+
+.exit-bar a {
+  padding: 8px 14px;
+  border: 2px solid #ff3b3b;
+  color: #ff3b3b;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
 /* SECCIONES */
 .section {
   display: none;
@@ -47,14 +63,10 @@ nav button {
   display: block;
 }
 
-/* TEXTO */
+/* TITULOS */
 h1 {
-  font-size: 28px;
+  font-size: 30px;
   text-shadow: 0 0 10px #0ff;
-}
-
-p {
-  font-size: 16px;
 }
 
 /* CARD */
@@ -66,7 +78,7 @@ p {
   border-radius: 10px;
 }
 
-/* BOTONES RGB 🔥 */
+/* BOTONES RGB PRO */
 .neon-btn {
   width: 90%;
   max-width: 300px;
@@ -78,15 +90,12 @@ p {
   color: white;
   font-weight: bold;
   background: linear-gradient(#000, #000) padding-box,
-              linear-gradient(45deg, #00ffff, #ff00ff, #00ff88, #00ffff) border-box;
-  animation: rgbBorder 4s linear infinite;
+              linear-gradient(90deg, #00ffff, #ff00ff, #00ff88, #00ffff) border-box;
+  transition: 0.3s;
 }
 
-@keyframes rgbBorder {
-  0% { background: linear-gradient(#000, #000) padding-box,
-                     linear-gradient(0deg, #00ffff, #ff00ff, #00ff88) border-box; }
-  100% { background: linear-gradient(#000, #000) padding-box,
-                        linear-gradient(360deg, #00ffff, #ff00ff, #00ff88) border-box; }
+.neon-btn:hover {
+  transform: scale(1.05);
 }
 
 /* COLORES */
@@ -130,21 +139,12 @@ p {
   <button onclick="showTab('contact')">Contacto</button>
 </nav>
 
-<a href="https://duquemartini.com/index.html"
-   style="
-   position:fixed;
-   top:10px;
-   right:10px;
-   z-index:9999;
-   padding:10px 14px;
-   border:2px solid #ff3b3b;
-   color:#ff3b3b;
-   background:rgba(0,0,0,0.6);
-   border-radius:10px;
-   text-decoration:none;
-   font-family:Arial;">
-   ⬅ Salir
-</a>
+<!-- 🔴 SALIDA (BIEN POSICIONADA) -->
+<div class="exit-bar">
+  <a href="https://duquemartini.com/index.html">
+    ⬅ Volver al sitio principal
+  </a>
+</div>
 
 <!-- HOME -->
 <div id="home" class="section active">
@@ -177,7 +177,7 @@ p {
     <div class="color" style="background:#00ffff" onclick="setColor('#00ffff')"></div>
     <div class="color" style="background:#a020f0" onclick="setColor('#a020f0')"></div>
     <div class="color" style="background:#00ff88" onclick="setColor('#00ff88')"></div>
-    <div class="color" style="background:#ffffff; border:1px solid #ccc" onclick="setColor('#ffffff')"></div>
+    <div class="color" style="background:#ffffff" onclick="setColor('#ffffff')"></div>
     <div class="color" style="background:#ff3b3b" onclick="setColor('#ff3b3b')"></div>
   </div>
 
@@ -188,16 +188,16 @@ p {
 
 <!-- CONTACTO -->
 <div id="contact" class="section">
-  <h1>📩 Contacto</h1>
+  <h1>📩 Contacto profesional</h1>
 
-  <p>Solicita tu web personalizada</p>
+  <p>Desarrollo de webs interactivas a medida</p>
 
   <a href="mailto:duqueluis06@gmail.com">
-    <button class="neon-btn">📧 Email</button>
+    <button class="neon-btn">📧 Email directo</button>
   </a>
 
   <a href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20interactiva" target="_blank">
-    <button class="neon-btn">💬 WhatsApp</button>
+    <button class="neon-btn">💬 WhatsApp Business</button>
   </a>
 </div>
 
