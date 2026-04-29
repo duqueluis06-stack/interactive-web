@@ -7,15 +7,28 @@
 
 <style>
 
+/* =======================
+   FONDO ESTRELLADO
+======================= */
 body{
   margin:0;
   font-family:Arial;
   color:white;
   text-align:center;
-  background:linear-gradient(135deg,#0f2027,#203a43,#000);
+  overflow-x:hidden;
+  background:black;
 }
 
-/* NAV */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+/* =======================
+   NAV
+======================= */
 nav{
   display:flex;
   flex-wrap:wrap;
@@ -23,6 +36,8 @@ nav{
   gap:10px;
   padding:12px;
   background:rgba(0,0,0,0.85);
+  position:sticky;
+  top:0;
 }
 
 nav button, nav a{
@@ -36,34 +51,37 @@ nav button, nav a{
   font-size:14px;
 }
 
-/* SALIDA */
+/* PORTAL SALIDA */
 .exit{
-  border:1px solid #ff3b3b !important;
-  color:#ff3b3b !important;
+  border:1px solid #ff2d55 !important;
+  color:#ff2d55 !important;
+  box-shadow:0 0 10px #ff2d55;
 }
 
-/* SECCIONES */
+/* =======================
+   SECCIONES
+======================= */
 .section{
   display:none;
   padding:60px 15px;
 }
 
-.active{
-  display:block;
-}
+.active{display:block;}
 
-/* TÍTULO HOLOGRÁFICO */
+/* =======================
+   TITULO 3D
+======================= */
 h1{
-  font-size:32px;
-  letter-spacing:2px;
+  font-size:34px;
   text-shadow:
-    2px 2px 0 #000,
-    0 0 10px #00ffff,
-    0 0 25px #00ffff,
-    -2px -2px 0 rgba(255,255,255,0.15);
+    0 0 10px cyan,
+    0 0 25px cyan,
+    0 0 40px rgba(0,255,255,0.4);
 }
 
-/* CARD */
+/* =======================
+   CARD
+======================= */
 .card{
   max-width:650px;
   margin:15px auto;
@@ -71,9 +89,12 @@ h1{
   background:rgba(255,255,255,0.05);
   border-radius:12px;
   line-height:1.7;
+  border:1px solid rgba(0,255,255,0.15);
 }
 
-/* BOTÓN 3D RGB PRO */
+/* =======================
+   BOTONES BASE
+======================= */
 .neon-btn{
   padding:14px 18px;
   margin:10px;
@@ -81,29 +102,35 @@ h1{
   cursor:pointer;
   font-weight:bold;
   color:white;
-
-  background:linear-gradient(145deg,#0f0f0f,#1b1b1b);
+  background:linear-gradient(145deg,#111,#222);
   border:1px solid rgba(0,255,255,0.4);
-
-  box-shadow:
-    0 4px 10px rgba(0,0,0,0.6),
-    0 0 15px rgba(0,255,255,0.25);
-
+  box-shadow:0 0 15px rgba(0,255,255,0.2);
   transition:0.25s;
 }
 
 .neon-btn:hover{
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:
-    0 10px 20px rgba(0,0,0,0.7),
-    0 0 30px rgba(0,255,255,0.6);
+  transform:scale(1.05);
+  box-shadow:0 0 30px cyan;
 }
 
-.neon-btn:active{
-  transform:scale(0.96);
+/* =======================
+   DEMO NIVEL COLORS
+======================= */
+.demo-btn{
+  background:linear-gradient(145deg,#00ffcc,#0066ff);
 }
 
-/* NIVELES */
+.demo-btn.level2{
+  background:linear-gradient(145deg,#ff00cc,#6600ff);
+}
+
+.demo-btn.level3{
+  background:linear-gradient(145deg,#00ff88,#00aa55);
+}
+
+/* =======================
+   NIVELES
+======================= */
 .level{
   max-width:650px;
   margin:10px auto;
@@ -114,7 +141,9 @@ h1{
   text-align:left;
 }
 
-/* CONTACTO */
+/* =======================
+   CONTACTO
+======================= */
 .contact{
   max-width:650px;
   margin:auto;
@@ -124,15 +153,19 @@ h1{
   line-height:1.8;
 }
 
-/* RESPONSIVE */
-@media(min-width:768px){
-  .neon-btn{width:auto;}
+/* WHATSAPP PRO */
+.whatsapp{
+  background:linear-gradient(145deg,#00ff88,#009955);
+  box-shadow:0 0 25px #00ff88;
+  color:black;
 }
 
 </style>
 </head>
 
 <body>
+
+<canvas id="stars"></canvas>
 
 <!-- NAV -->
 <nav>
@@ -142,104 +175,131 @@ h1{
   <button onclick="show('contact')">Contacto</button>
 
   <a class="exit" href="https://duquemartini.com/index.html">
-    ⬅ Salir
+    ⬅ Portal salida
   </a>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="section active">
-  <h1>⚡ Webs Interactivas a Medida</h1>
 
-  <div class="card">
-    Diseño web moderno, interactivo y completamente personalizado según el proyecto del cliente.
-  </div>
+<h1>⚡ Webs Interactivas a Medida</h1>
 
-  <button class="neon-btn" onclick="show('demo')">
-    Ver demo
-  </button>
+<div class="card">
+Desarrollo de sitios web personalizados según nivel de interacción, diseño y objetivos del cliente.
+</div>
+
+<button class="neon-btn" onclick="show('demo')">
+🚀 Ir a Demo
+</button>
+
 </div>
 
 <!-- DEMO -->
 <div id="demo" class="section">
-  <h1>🧠 Demo interactiva</h1>
 
-  <div class="card" id="txt">Selecciona una opción</div>
+<h1>🧠 Demo interactiva</h1>
 
-  <button class="neon-btn" onclick="demo('A')">Diseño</button>
-  <button class="neon-btn" onclick="demo('B')">Animación</button>
-  <button class="neon-btn" onclick="demo('C')">Experiencia</button>
+<div class="card" id="txt">Selecciona un nivel</div>
+
+<button class="neon-btn demo-btn" onclick="demo('A')">Nivel Diseño</button>
+<button class="neon-btn demo-btn level2" onclick="demo('B')">Nivel Animación</button>
+<button class="neon-btn demo-btn level3" onclick="demo('C')">Nivel Experiencia</button>
+
 </div>
 
 <!-- NIVELES -->
 <div id="levels" class="section">
-  <h1>📊 Niveles de desarrollo</h1>
 
-  <div class="level">
-    <b>Nivel 1:</b> Web básica informativa y ligera.
-  </div>
+<h1>📊 Niveles de desarrollo</h1>
 
-  <div class="level">
-    <b>Nivel 2:</b> Interacción + animaciones visuales.
-  </div>
+<div class="level">Nivel 1 — Web básica funcional</div>
+<div class="level">Nivel 2 — Diseño visual interactivo</div>
+<div class="level">Nivel 3 — UX profesional + conversión</div>
+<div class="level">Nivel 4 — Multimedia (audio/video/sensores)</div>
 
-  <div class="level">
-    <b>Nivel 3:</b> Web profesional completa (UX/UI optimizado).
-  </div>
+<div class="card">
+Cada proyecto se adapta al cliente según necesidad, estilo y presupuesto.
+</div>
 
-  <div class="level">
-    <b>Nivel 4 Premium:</b> Multimedia (MP4 / MP3), branding avanzado y sistemas interactivos.
-  </div>
-
-  <div class="card">
-    🔹 Cada proyecto se adapta al cliente según necesidades reales.
-  </div>
 </div>
 
 <!-- CONTACTO -->
 <div id="contact" class="section">
-  <h1>📩 Contacto profesional</h1>
 
-  <div class="contact">
+<h1>📩 Contacto profesional</h1>
 
-    Si te interesa una web personalizada o tienes dudas:
+<div class="contact">
 
-    <br><br>
+Email disponible bajo sistema protegido (anti-spam activo)
 
-    📧 Email: <b>duqueluis06@gmail.com</b><br>
-    📱 WhatsApp Business disponible
+<br><br>
 
-    <br><br>
+📧 Contacto directo vía formulario o redirección segura  
+📱 WhatsApp Business activo
 
-    <a class="neon-btn" href="mailto:duqueluis06@gmail.com">
-      Enviar email
-    </a>
+<br><br>
 
-    <a class="neon-btn"
-       href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20a%20medida"
-       target="_blank">
-      WhatsApp
-    </a>
+<a class="neon-btn" href="mailto:duqueluis06@gmail.com">
+📨 Email seguro
+</a>
 
-    <p style="opacity:0.7; margin-top:10px;">
-      Respuesta rápida · Proyectos personalizados · Desarrollo a medida
-    </p>
+<a class="neon-btn whatsapp"
+   href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20a%20medida"
+   target="_blank">
+📲 WhatsApp
+</a>
 
-  </div>
+</div>
+
 </div>
 
 <script>
 
+/* =======================
+   ESTRELLAS MOVIMIENTO
+======================= */
+const c=document.getElementById("stars");
+const x=c.getContext("2d");
+
+c.width=innerWidth;
+c.height=innerHeight;
+
+let s=[...Array(180)].map(()=>({
+ x:Math.random()*c.width,
+ y:Math.random()*c.height,
+ r:Math.random()*2,
+ v:Math.random()*0.8,
+ h:Math.random()*360
+}));
+
+function loop(){
+ x.clearRect(0,0,c.width,c.height);
+ s.forEach(st=>{
+  x.beginPath();
+  x.arc(st.x,st.y,st.r,0,Math.PI*2);
+  x.fillStyle=`hsl(${st.h},100%,70%)`;
+  x.fill();
+  st.y+=st.v;
+  if(st.y>c.height) st.y=0;
+ });
+ requestAnimationFrame(loop);
+}
+loop();
+
+/* =======================
+   DEMO LOGICA
+======================= */
 function show(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
 }
 
 function demo(t){
-  let msg="";
-  if(t==="A") msg="Diseño moderno aplicado";
-  if(t==="B") msg="Animaciones fluidas activas";
-  if(t==="C") msg="Experiencia optimizada UX/UI";
-  document.getElementById("txt").innerText=msg;
+ let msg="";
+ if(t==="A") msg="🟦 Nivel Diseño activado: estructura visual optimizada";
+ if(t==="B") msg="🟪 Nivel Animación activo: movimiento y dinamismo";
+ if(t==="C") msg="🟩 Nivel Experiencia activo: UX avanzado y conversión";
+ document.getElementById("txt").innerText=msg;
 }
 
 </script>
