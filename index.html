@@ -8,7 +8,7 @@
 <style>
 
 /* =======================
-   FONDO ESTRELLADO
+   BASE
 ======================= */
 body{
   margin:0;
@@ -19,6 +19,9 @@ body{
   background:black;
 }
 
+/* =======================
+   ESTRELLAS
+======================= */
 canvas{
   position:fixed;
   top:0;
@@ -51,7 +54,9 @@ nav button, nav a{
   font-size:14px;
 }
 
-/* PORTAL SALIDA */
+/* =======================
+   PORTAL SALIDA
+======================= */
 .exit{
   border:1px solid #ff2d55 !important;
   color:#ff2d55 !important;
@@ -66,17 +71,16 @@ nav button, nav a{
   padding:60px 15px;
 }
 
-.active{display:block;}
+.active{
+  display:block;
+}
 
 /* =======================
-   TITULO 3D
+   TITULO
 ======================= */
 h1{
   font-size:34px;
-  text-shadow:
-    0 0 10px cyan,
-    0 0 25px cyan,
-    0 0 40px rgba(0,255,255,0.4);
+  text-shadow:0 0 20px cyan,0 0 40px rgba(0,255,255,0.4);
 }
 
 /* =======================
@@ -93,7 +97,7 @@ h1{
 }
 
 /* =======================
-   BOTONES BASE
+   BOTONES
 ======================= */
 .neon-btn{
   padding:14px 18px;
@@ -106,6 +110,10 @@ h1{
   border:1px solid rgba(0,255,255,0.4);
   box-shadow:0 0 15px rgba(0,255,255,0.2);
   transition:0.25s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
 }
 
 .neon-btn:hover{
@@ -114,7 +122,7 @@ h1{
 }
 
 /* =======================
-   DEMO NIVEL COLORS
+   DEMO COLORES NIVEL
 ======================= */
 .demo-btn{
   background:linear-gradient(145deg,#00ffcc,#0066ff);
@@ -142,7 +150,7 @@ h1{
 }
 
 /* =======================
-   CONTACTO
+   CONTACTO FIX WHATSAPP
 ======================= */
 .contact{
   max-width:650px;
@@ -150,14 +158,32 @@ h1{
   padding:25px;
   background:rgba(255,255,255,0.04);
   border-radius:10px;
-  line-height:1.8;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
 }
 
-/* WHATSAPP PRO */
+/* WHATSAPP FIX COMPLETO */
 .whatsapp{
   background:linear-gradient(145deg,#00ff88,#009955);
   box-shadow:0 0 25px #00ff88;
   color:black;
+  white-space:nowrap;
+}
+
+a.whatsapp{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+}
+
+/* EMAIL OCULTO */
+.email-hide{
+  opacity:0.8;
+  font-size:14px;
 }
 
 </style>
@@ -175,7 +201,7 @@ h1{
   <button onclick="show('contact')">Contacto</button>
 
   <a class="exit" href="https://duquemartini.com/index.html">
-    ⬅ Portal salida
+    ⬅ Salir
   </a>
 </nav>
 
@@ -185,11 +211,11 @@ h1{
 <h1>⚡ Webs Interactivas a Medida</h1>
 
 <div class="card">
-Desarrollo de sitios web personalizados según nivel de interacción, diseño y objetivos del cliente.
+Diseño web interactivo adaptado a cada cliente según nivel, estilo y objetivo comercial.
 </div>
 
 <button class="neon-btn" onclick="show('demo')">
-🚀 Ir a Demo
+🚀 Ver Demo
 </button>
 
 </div>
@@ -201,9 +227,9 @@ Desarrollo de sitios web personalizados según nivel de interacción, diseño y 
 
 <div class="card" id="txt">Selecciona un nivel</div>
 
-<button class="neon-btn demo-btn" onclick="demo('A')">Nivel Diseño</button>
-<button class="neon-btn demo-btn level2" onclick="demo('B')">Nivel Animación</button>
-<button class="neon-btn demo-btn level3" onclick="demo('C')">Nivel Experiencia</button>
+<button class="neon-btn demo-btn" onclick="demo('A')">Diseño</button>
+<button class="neon-btn demo-btn level2" onclick="demo('B')">Animación</button>
+<button class="neon-btn demo-btn level3" onclick="demo('C')">Experiencia</button>
 
 </div>
 
@@ -212,35 +238,30 @@ Desarrollo de sitios web personalizados según nivel de interacción, diseño y 
 
 <h1>📊 Niveles de desarrollo</h1>
 
-<div class="level">Nivel 1 — Web básica funcional</div>
+<div class="level">Nivel 1 — Web básica informativa</div>
 <div class="level">Nivel 2 — Diseño visual interactivo</div>
-<div class="level">Nivel 3 — UX profesional + conversión</div>
-<div class="level">Nivel 4 — Multimedia (audio/video/sensores)</div>
+<div class="level">Nivel 3 — UX profesional optimizado</div>
+<div class="level">Nivel 4 — Multimedia avanzada (audio/video)</div>
 
 <div class="card">
-Cada proyecto se adapta al cliente según necesidad, estilo y presupuesto.
+Cada proyecto se adapta completamente al cliente.
 </div>
 
 </div>
 
-<!-- CONTACTO -->
+<!-- CONTACT -->
 <div id="contact" class="section">
 
 <h1>📩 Contacto profesional</h1>
 
 <div class="contact">
 
-Email disponible bajo sistema protegido (anti-spam activo)
-
-<br><br>
-
-📧 Contacto directo vía formulario o redirección segura  
-📱 WhatsApp Business activo
-
-<br><br>
+<div class="email-hide">
+Email disponible bajo sistema seguro anti-spam
+</div>
 
 <a class="neon-btn" href="mailto:duqueluis06@gmail.com">
-📨 Email seguro
+📨 Email
 </a>
 
 <a class="neon-btn whatsapp"
@@ -256,7 +277,7 @@ Email disponible bajo sistema protegido (anti-spam activo)
 <script>
 
 /* =======================
-   ESTRELLAS MOVIMIENTO
+   ESTRELLAS
 ======================= */
 const c=document.getElementById("stars");
 const x=c.getContext("2d");
@@ -287,7 +308,7 @@ function loop(){
 loop();
 
 /* =======================
-   DEMO LOGICA
+   NAV LOGIC
 ======================= */
 function show(id){
  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
@@ -296,9 +317,9 @@ function show(id){
 
 function demo(t){
  let msg="";
- if(t==="A") msg="🟦 Nivel Diseño activado: estructura visual optimizada";
- if(t==="B") msg="🟪 Nivel Animación activo: movimiento y dinamismo";
- if(t==="C") msg="🟩 Nivel Experiencia activo: UX avanzado y conversión";
+ if(t==="A") msg="🟦 Diseño aplicado correctamente";
+ if(t==="B") msg="🟪 Animación activa";
+ if(t==="C") msg="🟩 Experiencia UX optimizada";
  document.getElementById("txt").innerText=msg;
 }
 
