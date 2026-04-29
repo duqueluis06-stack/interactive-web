@@ -21,13 +21,13 @@ nav{
   flex-wrap:wrap;
   justify-content:center;
   gap:10px;
-  padding:10px;
-  background:rgba(0,0,0,0.8);
+  padding:12px;
+  background:rgba(0,0,0,0.85);
 }
 
 nav button, nav a{
   padding:10px 12px;
-  border-radius:8px;
+  border-radius:10px;
   border:1px solid #0ff;
   background:transparent;
   color:#0ff;
@@ -36,7 +36,7 @@ nav button, nav a{
   font-size:14px;
 }
 
-/* BOTÓN SALIDA DESTACADO */
+/* SALIDA */
 .exit{
   border:1px solid #ff3b3b !important;
   color:#ff3b3b !important;
@@ -52,53 +52,76 @@ nav button, nav a{
   display:block;
 }
 
-/* TITULOS */
+/* TÍTULO HOLOGRÁFICO */
 h1{
-  text-shadow:0 0 10px #0ff;
+  font-size:32px;
+  letter-spacing:2px;
+  text-shadow:
+    2px 2px 0 #000,
+    0 0 10px #00ffff,
+    0 0 25px #00ffff,
+    -2px -2px 0 rgba(255,255,255,0.15);
 }
 
 /* CARD */
 .card{
-  max-width:600px;
+  max-width:650px;
   margin:15px auto;
-  padding:15px;
+  padding:18px;
   background:rgba(255,255,255,0.05);
-  border-radius:10px;
+  border-radius:12px;
+  line-height:1.7;
 }
 
-/* BOTONES */
+/* BOTÓN 3D RGB PRO */
 .neon-btn{
-  padding:12px;
+  padding:14px 18px;
   margin:10px;
-  border-radius:10px;
-  border:2px solid #0ff;
-  background:transparent;
-  color:#0ff;
+  border-radius:12px;
   cursor:pointer;
+  font-weight:bold;
+  color:white;
+
+  background:linear-gradient(145deg,#0f0f0f,#1b1b1b);
+  border:1px solid rgba(0,255,255,0.4);
+
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.6),
+    0 0 15px rgba(0,255,255,0.25);
+
+  transition:0.25s;
+}
+
+.neon-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.7),
+    0 0 30px rgba(0,255,255,0.6);
+}
+
+.neon-btn:active{
+  transform:scale(0.96);
 }
 
 /* NIVELES */
 .level{
-  text-align:left;
   max-width:650px;
-  margin:auto;
-  background:rgba(255,255,255,0.04);
+  margin:10px auto;
   padding:15px;
+  background:rgba(255,255,255,0.04);
   border-radius:10px;
   border:1px solid rgba(0,255,255,0.2);
-}
-
-.level h3{
-  color:#00ffff;
+  text-align:left;
 }
 
 /* CONTACTO */
 .contact{
   max-width:650px;
   margin:auto;
+  padding:25px;
   background:rgba(255,255,255,0.04);
-  padding:15px;
   border-radius:10px;
+  line-height:1.8;
 }
 
 /* RESPONSIVE */
@@ -111,14 +134,13 @@ h1{
 
 <body>
 
-<!-- NAV PRINCIPAL -->
+<!-- NAV -->
 <nav>
   <button onclick="show('home')">Inicio</button>
   <button onclick="show('demo')">Demo</button>
   <button onclick="show('levels')">Niveles</button>
   <button onclick="show('contact')">Contacto</button>
 
-  <!-- SALIDA CLARA (SIN SUPERPOSICIÓN) -->
   <a class="exit" href="https://duquemartini.com/index.html">
     ⬅ Salir
   </a>
@@ -129,8 +151,7 @@ h1{
   <h1>⚡ Webs Interactivas a Medida</h1>
 
   <div class="card">
-    Diseño web moderno, interactivo y adaptable a cualquier proyecto.
-    Experiencia visual + funcionalidad real + personalización total.
+    Diseño web moderno, interactivo y completamente personalizado según el proyecto del cliente.
   </div>
 
   <button class="neon-btn" onclick="show('demo')">
@@ -154,23 +175,23 @@ h1{
   <h1>📊 Niveles de desarrollo</h1>
 
   <div class="level">
-    <h3>Nivel 1 — Básico</h3>
-    Sitio web informativo, estructura limpia, ideal para presentación.
+    <b>Nivel 1:</b> Web básica informativa y ligera.
   </div>
 
   <div class="level">
-    <h3>Nivel 2 — Interactivo</h3>
-    Animaciones, botones dinámicos, navegación avanzada.
+    <b>Nivel 2:</b> Interacción + animaciones visuales.
   </div>
 
   <div class="level">
-    <h3>Nivel 3 — Profesional</h3>
-    Diseño optimizado, secciones múltiples, experiencia UI/UX completa.
+    <b>Nivel 3:</b> Web profesional completa (UX/UI optimizado).
   </div>
 
   <div class="level">
-    <h3>Nivel 4 — Premium Plus</h3>
-    Integración multimedia (MP4 / MP3), sistemas avanzados, branding completo.
+    <b>Nivel 4 Premium:</b> Multimedia (MP4 / MP3), branding avanzado y sistemas interactivos.
+  </div>
+
+  <div class="card">
+    🔹 Cada proyecto se adapta al cliente según necesidades reales.
   </div>
 </div>
 
@@ -179,13 +200,13 @@ h1{
   <h1>📩 Contacto profesional</h1>
 
   <div class="contact">
-    Si te interesa una web personalizada o tienes dudas sobre el proyecto,  
-    puedes contactarme directamente:
+
+    Si te interesa una web personalizada o tienes dudas:
 
     <br><br>
 
     📧 Email: <b>duqueluis06@gmail.com</b><br>
-    📱 WhatsApp Business: disponible para atención directa
+    📱 WhatsApp Business disponible
 
     <br><br>
 
@@ -202,6 +223,7 @@ h1{
     <p style="opacity:0.7; margin-top:10px;">
       Respuesta rápida · Proyectos personalizados · Desarrollo a medida
     </p>
+
   </div>
 </div>
 
