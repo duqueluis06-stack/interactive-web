@@ -23,6 +23,9 @@ nav {
   gap: 10px;
   padding: 10px;
   background: rgba(0,0,0,0.75);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav button {
@@ -36,12 +39,12 @@ nav button {
   cursor: pointer;
 }
 
-/* BOTÓN SALIDA PRO */
+/* 🔴 SALIDA FIJA Y LIMPIA */
 .exit-bar {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  background: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
 }
 
 .exit-bar a {
@@ -50,7 +53,8 @@ nav button {
   color: #ff3b3b;
   border-radius: 10px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
+  background: rgba(0,0,0,0.6);
 }
 
 /* SECCIONES */
@@ -131,6 +135,11 @@ h1 {
 
 <body>
 
+<!-- 🔴 SALIDA -->
+<div class="exit-bar">
+  <a href="https://duquemartini.com/index.html">⬅ Salir</a>
+</div>
+
 <!-- NAV -->
 <nav>
   <button onclick="showTab('home')">Inicio</button>
@@ -139,16 +148,9 @@ h1 {
   <button onclick="showTab('contact')">Contacto</button>
 </nav>
 
-<!-- 🔴 SALIDA (BIEN POSICIONADA) -->
-<div class="exit-bar">
-  <a href="https://duquemartini.com/index.html">
-    ⬅ Volver al sitio principal
-  </a>
-</div>
-
 <!-- HOME -->
 <div id="home" class="section active">
-  <h1>⚡ Webs Interactivas Premium</h1>
+  <h1>⚡ Webs Interactivas a Medida</h1>
   <p>Diseño moderno · Animación · Experiencia visual</p>
 
   <button class="neon-btn" onclick="showTab('demo')">
@@ -161,7 +163,7 @@ h1 {
   <h1>🧠 Demo interactiva</h1>
 
   <div class="card" id="demoText">
-    Toca un botón
+    Selecciona una opción
   </div>
 
   <button class="neon-btn" onclick="demo('A')">Diseño</button>
@@ -171,7 +173,7 @@ h1 {
 
 <!-- ESTILO -->
 <div id="style" class="section">
-  <h1>🎨 Personaliza</h1>
+  <h1>🎨 Personalización</h1>
 
   <div class="colors">
     <div class="color" style="background:#00ffff" onclick="setColor('#00ffff')"></div>
@@ -193,11 +195,11 @@ h1 {
   <p>Desarrollo de webs interactivas a medida</p>
 
   <a href="mailto:duqueluis06@gmail.com">
-    <button class="neon-btn">📧 Email directo</button>
+    <button class="neon-btn">📧 Email</button>
   </a>
 
   <a href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20interactiva" target="_blank">
-    <button class="neon-btn">💬 WhatsApp Business</button>
+    <button class="neon-btn">💬 WhatsApp</button>
   </a>
 </div>
 
