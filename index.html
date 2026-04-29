@@ -66,17 +66,27 @@ p {
   border-radius: 10px;
 }
 
-/* BOTONES */
+/* BOTONES RGB 🔥 */
 .neon-btn {
   width: 90%;
   max-width: 300px;
   padding: 12px;
   margin: 10px;
-  border: 2px solid #0ff;
-  background: transparent;
-  color: #0ff;
+  border: 2px solid transparent;
   border-radius: 10px;
   cursor: pointer;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(#000, #000) padding-box,
+              linear-gradient(45deg, #00ffff, #ff00ff, #00ff88, #00ffff) border-box;
+  animation: rgbBorder 4s linear infinite;
+}
+
+@keyframes rgbBorder {
+  0% { background: linear-gradient(#000, #000) padding-box,
+                     linear-gradient(0deg, #00ffff, #ff00ff, #00ff88) border-box; }
+  100% { background: linear-gradient(#000, #000) padding-box,
+                        linear-gradient(360deg, #00ffff, #ff00ff, #00ff88) border-box; }
 }
 
 /* COLORES */
@@ -94,24 +104,16 @@ p {
   cursor: pointer;
 }
 
-/* DESKTOP AJUSTES */
+/* DESKTOP */
 @media(min-width:768px){
 
-  h1 {
-    font-size: 42px;
-  }
+  h1 { font-size: 42px; }
 
-  nav button {
-    flex: none;
-  }
+  nav button { flex: none; }
 
-  .neon-btn {
-    width: auto;
-  }
+  .neon-btn { width: auto; }
 
-  .card {
-    max-width: 600px;
-  }
+  .card { max-width: 600px; }
 
 }
 
@@ -174,11 +176,11 @@ p {
 
   <p>Solicita tu web personalizada</p>
 
-  <a href="mailto:TUEMAIL@gmail.com">
+  <a href="mailto:duqueluis06@gmail.com">
     <button class="neon-btn">📧 Email</button>
   </a>
 
-  <a href="https://wa.me/33XXXXXXXXX" target="_blank">
+  <a href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20interactiva" target="_blank">
     <button class="neon-btn">💬 WhatsApp</button>
   </a>
 </div>
