@@ -186,6 +186,14 @@ a.whatsapp{
   font-size:14px;
 }
 
+  nav button.active{
+  background:#0ff;
+  color:black;
+  box-shadow:0 0 15px cyan;
+}
+
+
+
 </style>
 </head>
 
@@ -195,10 +203,10 @@ a.whatsapp{
 
 <!-- NAV -->
 <nav>
-  <button onclick="show('home')">Inicio</button>
-  <button onclick="show('demo')">Demo</button>
-  <button onclick="show('levels')">Niveles</button>
-  <button onclick="show('contact')">Contacto</button>
+  <button onclick="show('home', this)">Inicio</button>
+  <button onclick="show('demo', this)">Demo</button>
+  <button onclick="show('levels', this)">Niveles</button>
+  <button onclick="show('contact', this)">Contacto</button>
 
   <a class="exit" href="https://duquemartini.com/index.html">
     ⬅ Salir
@@ -310,9 +318,12 @@ loop();
 /* =======================
    NAV LOGIC
 ======================= */
-function show(id){
+function show(id, el){
  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
  document.getElementById(id).classList.add('active');
+
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(el) el.classList.add('active');
 }
 
 function demo(t){
