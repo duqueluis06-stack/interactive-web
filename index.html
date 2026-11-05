@@ -3,197 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Interactiva Premium | Luis</title>
+<title>Web Interactiva Premium | Luis Duque</title>
+
+<!-- 📊 GOOGLE ANALYTICS 4 (REEMPLAZAR 'G-XXXXXXXXXX' CON TU ID DE MEDICIÓN) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+
+  // FUNCIÓN DE SEGUIMIENTO PERSONALIZADA PARA ANALYTICS
+  function trackEvent(action, category, label) {
+    if (typeof gtag === 'function') {
+      gtag('event', action, {
+        'event_category': category,
+        'event_label': label
+      });
+    }
+  }
+</script>
 
 <style>
-
 /* =======================
-   BASE
+   BASE Y TIPOGRAFÍA
 ======================= */
-body{
-  margin:0;
-  font-family:Arial;
-  color:white;
-  text-align:center;
-  overflow-x:hidden;
-  background:black;
+:root {
+  --cyan: #00ffcc;
+  --cyan-glow: rgba(0, 255, 204, 0.4);
+  --pink: #ff0055;
+  --green: #00ff88;
+  --bg-dark: #050508;
+  --glass: rgba(255, 255, 255, 0.05);
+  --border: rgba(0, 255, 204, 0.2);
 }
 
-/* =======================
-   ESTRELLAS
-======================= */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+  background: var(--bg-dark);
+  line-height: 1.6;
 }
 
-/* =======================
-   NAV
-======================= */
-nav{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-  padding:12px;
-  background:rgba(0,0,0,0.85);
-  position:sticky;
-  top:0;
-}
-
-nav button, nav a{
-  padding:10px 12px;
-  border-radius:10px;
-  border:1px solid #0ff;
-  background:transparent;
-  color:#0ff;
-  cursor:pointer;
-  text-decoration:none;
-  font-size:14px;
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 /* =======================
-   PORTAL SALIDA
+   BARRA DE NAVEGACIÓN Y IDIOMA
 ======================= */
-.exit{
-  border:1px solid #ff2d55 !important;
-  color:#ff2d55 !important;
-  box-shadow:0 0 10px #ff2d55;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(5, 5, 8, 0.9);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+nav button, nav a {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--cyan);
+  background: transparent;
+  color: var(--cyan);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav button:hover, nav button.active {
+  background: var(--cyan);
+  color: black;
+  box-shadow: 0 0 15px var(--cyan);
+}
+
+.lang-switch {
+  display: flex;
+  gap: 5px;
+  margin-left: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.lang-btn {
+  border: none !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+}
+
+.exit {
+  border: 1px solid var(--pink) !important;
+  color: var(--pink) !important;
+  box-shadow: 0 0 10px var(--pink);
+}
+
+.exit:hover {
+  background: var(--pink) !important;
+  color: white !important;
 }
 
 /* =======================
-   SECCIONES
+   SECCIONES Y TARJETAS
 ======================= */
-.section{
-  display:none;
-  padding:60px 15px;
+.section {
+  display: none;
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
 }
 
-.active{
-  display:block;
+.active-section {
+  display: block;
+}
+
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  color: white;
+  text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan-glow);
+  margin-bottom: 20px;
+}
+
+.card {
+  background: var(--glass);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  margin: 20px 0;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 /* =======================
-   TITULO
+   BOTONES NEÓN
 ======================= */
-h1{
-  font-size:34px;
-  text-shadow:0 0 20px cyan,0 0 40px rgba(0,255,255,0.4);
+.neon-btn {
+  padding: 14px 24px;
+  margin: 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(145deg, #111, #222);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.neon-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--cyan);
+  box-shadow: 0 0 25px var(--cyan);
+}
+
+.demo-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
 }
 
 /* =======================
-   CARD
+   WIDGETS INTERACTIVOS DE DEMO
 ======================= */
-.card{
-  max-width:650px;
-  margin:15px auto;
-  padding:18px;
-  background:rgba(255,255,255,0.05);
-  border-radius:12px;
-  line-height:1.7;
-  border:1px solid rgba(0,255,255,0.15);
+.demo-display {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--cyan);
+  border-radius: 14px;
+  padding: 20px;
+  min-height: 250px;
+  box-shadow: 0 0 15px var(--cyan-glow);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.restaurant-menu-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(0, 255, 204, 0.3);
+  padding: 8px 0;
+}
+
+iframe {
+  width: 100%;
+  height: 200px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
 }
 
 /* =======================
-   BOTONES
+   CONTACTO Y WHATSAPP FIX
 ======================= */
-.neon-btn{
-  padding:14px 18px;
-  margin:10px;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:bold;
-  color:white;
-  background:linear-gradient(145deg,#111,#222);
-  border:1px solid rgba(0,255,255,0.4);
-  box-shadow:0 0 15px rgba(0,255,255,0.2);
-  transition:0.25s;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
+.whatsapp {
+  background: linear-gradient(145deg, #00ff88, #009955) !important;
+  box-shadow: 0 0 25px #00ff88 !important;
+  color: black !important;
 }
 
-.neon-btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 30px cyan;
+.whatsapp:hover {
+  box-shadow: 0 0 35px #00ff88 !important;
 }
 
-/* =======================
-   DEMO COLORES NIVEL
-======================= */
-.demo-btn{
-  background:linear-gradient(145deg,#00ffcc,#0066ff);
+.analytics-tag {
+  font-size: 11px;
+  color: var(--cyan);
+  background: rgba(0,255,204,0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
-.demo-btn.level2{
-  background:linear-gradient(145deg,#ff00cc,#6600ff);
+@media (max-width: 600px) {
+  nav { gap: 6px; padding: 10px; }
+  nav button, nav a { padding: 6px 10px; font-size: 12px; }
 }
-
-.demo-btn.level3{
-  background:linear-gradient(145deg,#00ff88,#00aa55);
-}
-
-/* =======================
-   NIVELES
-======================= */
-.level{
-  max-width:650px;
-  margin:10px auto;
-  padding:15px;
-  background:rgba(255,255,255,0.04);
-  border-radius:10px;
-  border:1px solid rgba(0,255,255,0.2);
-  text-align:left;
-}
-
-/* =======================
-   CONTACTO FIX WHATSAPP
-======================= */
-.contact{
-  max-width:650px;
-  margin:auto;
-  padding:25px;
-  background:rgba(255,255,255,0.04);
-  border-radius:10px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-}
-
-/* WHATSAPP FIX COMPLETO */
-.whatsapp{
-  background:linear-gradient(145deg,#00ff88,#009955);
-  box-shadow:0 0 25px #00ff88;
-  color:black;
-  white-space:nowrap;
-}
-
-a.whatsapp{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-}
-
-/* EMAIL OCULTO */
-.email-hide{
-  opacity:0.8;
-  font-size:14px;
-}
-
-  nav button.active{
-  background:#0ff;
-  color:black;
-  box-shadow:0 0 15px cyan;
-}
-
-
-
 </style>
 </head>
 
@@ -201,139 +251,259 @@ a.whatsapp{
 
 <canvas id="stars"></canvas>
 
-<!-- NAV -->
+<!-- NAVEGACIÓN -->
 <nav>
-  <button onclick="show('home', this)">Inicio</button>
-  <button onclick="show('demo', this)">Demo</button>
-  <button onclick="show('levels', this)">Niveles</button>
-  <button onclick="show('contact', this)">Contacto</button>
+  <button id="nav-home" class="active" onclick="show('home', this)">Inicio</button>
+  <button id="nav-demo" onclick="show('demo', this)">Demos Comerciales</button>
+  <button id="nav-levels" onclick="show('levels', this)">Niveles</button>
+  <button id="nav-contact" onclick="show('contact', this)">Contacto</button>
 
-  <a class="exit" href="https://duquemartini.com/index.html">
-    ⬅ Salir
-  </a>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+
+  <a class="exit" href="https://duquemartini.com/index.html">⬅ Salir</a>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="section active">
+<!-- INICIO -->
+<div id="home" class="section active-section">
+  <h1 data-es="⚡ Webs Interactivas & Sistemas a Medida" data-fr="⚡ Sites Web Interactifs & Systèmes Sur Mesure">⚡ Webs Interactivas & Sistemas a Medida</h1>
+  
+  <div class="card">
+    <p data-es="Desarrollo de experiencias web modernas para restaurantes, portafolios profesionales e integración de servicios en vivo (Mapas, Analítica, Clima, Bolsa). Diseñado para máxima velocidad y conversión de clientes."
+       data-fr="Développement d'expériences web modernes pour restaurants, portfolios professionnels et intégration de services en direct (Cartes, Analytics, Météo, Bourse). Conçu pour une vitesse et une conversion maximales.">
+      Desarrollo de experiencias web modernas para restaurantes, portafolios profesionales e integración de servicios en vivo (Mapas, Analítica, Clima, Bolsa). Diseñado para máxima velocidad y conversión de clientes.
+    </p>
+  </div>
 
-<h1>⚡ Webs Interactivas a Medida</h1>
-
-<div class="card">
-Diseño web interactivo adaptado a cada cliente según nivel, estilo y objetivo comercial.
+  <button class="neon-btn" onclick="show('demo', document.getElementById('nav-demo'))" data-es="🚀 Explorar Demos Interactivas" data-fr="🚀 Explorer les Démos Interactives">
+    🚀 Explorar Demos Interactivas
+  </button>
 </div>
 
-<button class="neon-btn" onclick="show('demo')">
-🚀 Ver Demo
-</button>
-
-</div>
-
-<!-- DEMO -->
+<!-- DEMOS COMERCIALES -->
 <div id="demo" class="section">
+  <h1 data-es="🧠 Panel de Demos en Vivo" data-fr="🧠 Panneau de Démos en Direct">🧠 Panel de Demos en Vivo</h1>
+  
+  <p data-es="Selecciona una industria para ver cómo interactúa la interfaz en tiempo real:"
+     data-fr="Sélectionnez un secteur pour voir comment l'interface interagit en temps réel:">
+    Selecciona una industria para ver cómo interactúa la interfaz en tiempo real:
+  </p>
 
-<h1>🧠 Demo interactiva</h1>
+  <div class="demo-btn-group">
+    <button class="neon-btn" onclick="loadDemo('resto')">🍽️ Restaurant Marseille</button>
+    <button class="neon-btn" onclick="loadDemo('widgets')">📈 Live Widgets (Clima/Bolsa)</button>
+    <button class="neon-btn" onclick="loadDemo('portfolio')">🎨 Web Portafolio 3D</button>
+  </div>
 
-<div class="card" id="txt">Selecciona un nivel</div>
-
-<button class="neon-btn demo-btn" onclick="demo('A')">Diseño</button>
-<button class="neon-btn demo-btn level2" onclick="demo('B')">Animación</button>
-<button class="neon-btn demo-btn level3" onclick="demo('C')">Experiencia</button>
-
+  <div id="demo-display" class="demo-display">
+    <!-- El contenido interactivo se carga dinámicamente aquí -->
+  </div>
 </div>
 
 <!-- NIVELES -->
 <div id="levels" class="section">
+  <h1 data-es="📊 Niveles de Desarrollo Web" data-fr="📊 Niveaux de Développement Web">📊 Niveles de Desarrollo Web</h1>
 
-<h1>📊 Niveles de desarrollo</h1>
+  <div class="card">
+    <div style="border-left: 3px solid var(--cyan); padding-left: 15px; margin-bottom: 15px;">
+      <h3 data-es="Nivel 1 — Web Comercial Responsive" data-fr="Niveau 1 — Site Commercial Réactif">Nivel 1 — Web Comercial Responsive</h3>
+      <p data-es="Estructura clara, información del negocio y optimización para teléfonos." data-fr="Structure claire, informations sur l'entreprise et optimisation pour mobile.">Estructura clara, información del negocio y optimización para teléfonos.</p>
+    </div>
 
-<div class="level">Nivel 1 — Web básica informativa</div>
-<div class="level">Nivel 2 — Diseño visual interactivo</div>
-<div class="level">Nivel 3 — UX profesional optimizado</div>
-<div class="level">Nivel 4 — Multimedia avanzada (audio/video)</div>
+    <div style="border-left: 3px solid var(--green); padding-left: 15px; margin-bottom: 15px;">
+      <h3 data-es="Nivel 2 — Integración de Mapas & Redes" data-fr="Niveau 2 — Intégration Cartes & Réseaux">Nivel 2 — Integración de Mapas & Redes</h3>
+      <p data-es="Google Maps interactivo, WhatsApp automatizado y menús digitales." data-fr="Google Maps interactif, WhatsApp automatisé et menus numériques.">Google Maps interactivo, WhatsApp automatizado y menús digitales.</p>
+    </div>
 
-<div class="card">
-Cada proyecto se adapta completamente al cliente.
+    <div style="border-left: 3px solid var(--pink); padding-left: 15px;">
+      <h3 data-es="Nivel 3 — Sistemas Dinámicos & Analytics GA4" data-fr="Niveau 3 — Systèmes Dynamiques & GA4">Nivel 3 — Sistemas Dinámicos & Analytics GA4</h3>
+      <p data-es="Telemetría de usuarios con Google Analytics 4, componentes 3D e integración de APIs en vivo." data-fr="Télémétrie utilisateur avec Google Analytics 4, composants 3D et intégration d'API en direct.">Telemetría de usuarios con Google Analytics 4, componentes 3D e integración de APIs en vivo.</p>
+    </div>
+  </div>
 </div>
 
-</div>
-
-<!-- CONTACT -->
+<!-- CONTACTO -->
 <div id="contact" class="section">
+  <h1 data-es="📩 Contacto & Presupuestos" data-fr="📩 Contact & Devis">📩 Contacto & Presupuestos</h1>
 
-<h1>📩 Contacto profesional</h1>
+  <div class="card" style="text-align: center;">
+    <p data-es="¿Quieres implementar una web interactiva o un sistema personalizado para tu negocio?"
+       data-fr="Vous souhaitez mettre en place un site web interactif ou un système personnalisé pour votre entreprise?">
+      ¿Quieres implementar una web interactiva o un sistema personalizado para tu negocio?
+    </p>
 
-<div class="contact">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px;">
+      <a class="neon-btn whatsapp" 
+         href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20informacion%20sobre%20una%20web%20interactiva" 
+         target="_blank"
+         onclick="trackEvent('click_whatsapp', 'contact', 'whatsapp_btn')">
+        📲 Contactar por WhatsApp
+      </a>
 
-<div class="email-hide">
-Email disponible bajo sistema seguro anti-spam
-</div>
+      <a class="neon-btn" 
+         href="mailto:duqueluis06@gmail.com"
+         onclick="trackEvent('click_email', 'contact', 'email_btn')">
+        📨 Enviar Email Directo
+      </a>
+    </div>
 
-<a class="neon-btn" href="mailto:duqueluis06@gmail.com">
-📨 Email
-</a>
-
-<a class="neon-btn whatsapp"
-   href="https://wa.me/33610342894?text=Hola%20Luis,%20quiero%20una%20web%20a%20medida"
-   target="_blank">
-📲 WhatsApp
-</a>
-
-</div>
-
+    <div class="analytics-tag">
+      📊 Google Analytics GA4: Eventos de conversión activos en botones
+    </div>
+  </div>
 </div>
 
 <script>
-
 /* =======================
-   ESTRELLAS
+   SISTEMA DE ESTRELLAS CANVAS
 ======================= */
-const c=document.getElementById("stars");
-const x=c.getContext("2d");
+const c = document.getElementById("stars");
+const x = c.getContext("2d");
 
-c.width=innerWidth;
-c.height=innerHeight;
+function resizeCanvas() {
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+}
+window.onresize = resizeCanvas;
+resizeCanvas();
 
-let s=[...Array(180)].map(()=>({
- x:Math.random()*c.width,
- y:Math.random()*c.height,
- r:Math.random()*2,
- v:Math.random()*0.8,
- h:Math.random()*360
+let s = [...Array(160)].map(() => ({
+  x: Math.random() * c.width,
+  y: Math.random() * c.height,
+  r: Math.random() * 1.8,
+  v: Math.random() * 0.6 + 0.2,
+  h: Math.random() * 360
 }));
 
-function loop(){
- x.clearRect(0,0,c.width,c.height);
- s.forEach(st=>{
-  x.beginPath();
-  x.arc(st.x,st.y,st.r,0,Math.PI*2);
-  x.fillStyle=`hsl(${st.h},100%,70%)`;
-  x.fill();
-  st.y+=st.v;
-  if(st.y>c.height) st.y=0;
- });
- requestAnimationFrame(loop);
+function loop() {
+  x.clearRect(0, 0, c.width, c.height);
+  s.forEach(st => {
+    x.beginPath();
+    x.arc(st.x, st.y, st.r, 0, Math.PI * 2);
+    x.fillStyle = `hsl(${st.h}, 100%, 70%)`;
+    x.fill();
+    st.y += st.v;
+    if (st.y > c.height) st.y = 0;
+  });
+  requestAnimationFrame(loop);
 }
 loop();
 
 /* =======================
-   NAV LOGIC
+   SISTEMA DE NAVEGACIÓN
 ======================= */
-function show(id, el){
- document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
- document.getElementById(id).classList.add('active');
+function show(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active-section'));
+  document.getElementById(id).classList.add('active-section');
 
- document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
- if(el) el.classList.add('active');
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+
+  trackEvent('navigate_section', 'navigation', id);
 }
 
-function demo(t){
- let msg="";
- if(t==="A") msg="🟦 Diseño aplicado correctamente";
- if(t==="B") msg="🟪 Animación activa";
- if(t==="C") msg="🟩 Experiencia UX optimizada";
- document.getElementById("txt").innerText=msg;
+/* =======================
+   SELECTOR DE IDIOMA (ES / FR)
+======================= */
+let currentLang = 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  document.querySelectorAll('[data-es]').forEach(el => {
+    el.innerText = el.getAttribute(`data-${lang}`);
+  });
+
+  // Recargar la demo actual con el nuevo idioma
+  if (currentDemo) loadDemo(currentDemo);
+
+  trackEvent('change_language', 'preferences', lang);
 }
 
+/* =======================
+   CARGADOR DE DEMOS INTERACTIVAS
+======================= */
+let currentDemo = 'resto';
+
+function loadDemo(type) {
+  currentDemo = type;
+  const display = document.getElementById('demo-display');
+  trackEvent('view_demo', 'interactive_demo', type);
+
+  if (type === 'resto') {
+    display.innerHTML = `
+      <h3 style="color:var(--cyan); margin-top:0;">
+        ${currentLang === 'es' ? '🍽️ Demo: Restaurante Le Vieux-Port (Marseille)' : '🍽️ Démo: Restaurant Le Vieux-Port (Marseille)'}
+      </h3>
+      <div class="grid-2">
+        <div>
+          <h4>${currentLang === 'es' ? 'Menú Digital Interactivo' : 'Menu Numérique Interactif'}</h4>
+          <div class="restaurant-menu-item">
+            <span>Bouillabaisse Traditionnelle</span>
+            <span style="color:var(--cyan)">28 €</span>
+          </div>
+          <div class="restaurant-menu-item">
+            <span>Loup de mer grillé</span>
+            <span style="color:var(--cyan)">22 €</span>
+          </div>
+          <div class="restaurant-menu-item">
+            <span>Ratatouille Provençale</span>
+            <span style="color:var(--cyan)">14 €</span>
+          </div>
+          <button class="neon-btn whatsapp" style="margin-top:15px; width:100%; font-size:12px;" onclick="trackEvent('demo_resto_order', 'demo', 'click')">
+            ${currentLang === 'es' ? '📲 Reservar Mesa por WhatsApp' : '📲 Réserver par WhatsApp'}
+          </button>
+        </div>
+        <div>
+          <h4>${currentLang === 'es' ? 'Ubicación en Vivo (Marseille)' : 'Localisation en Direct'}</h4>
+          <iframe src="https://maps.google.com/maps?q=Vieux-Port%20Marseille&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+        </div>
+      </div>
+    `;
+  } 
+  else if (type === 'widgets') {
+    display.innerHTML = `
+      <h3 style="color:var(--green); margin-top:0;">
+        ${currentLang === 'es' ? '📈 Demo: Widgets de Información en Vivo' : '📈 Démo: Widgets d\'Informations en Direct'}
+      </h3>
+      <div class="grid-2">
+        <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:10px; border:1px solid rgba(0,255,136,0.3);">
+          <h4>☀️ ${currentLang === 'es' ? 'Meteo Marseille' : 'Météo Marseille'}</h4>
+          <p style="font-size:24px; font-weight:bold; color:var(--green); margin:5px 0;">21°C — Ensoleillé</p>
+          <small>${currentLang === 'es' ? 'Humedad: 58% | Viento: 12 km/h' : 'Humidité: 58% | Vent: 12 km/h'}</small>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); padding:15px; border-radius:10px; border:1px solid rgba(0,255,136,0.3);">
+          <h4>📊 ${currentLang === 'es' ? 'Mercado / Tech Index' : 'Marché / Tech Index'}</h4>
+          <p style="font-size:24px; font-weight:bold; color:var(--cyan); margin:5px 0;">+4.85% ↗</p>
+          <small>${currentLang === 'es' ? 'Actualización cada 5 segundos (Simulación API)' : 'Mise à jour toutes les 5 secondes (Simulation API)'}</small>
+        </div>
+      </div>
+    `;
+  }
+  else if (type === 'portfolio') {
+    display.innerHTML = `
+      <h3 style="color:var(--pink); margin-top:0;">
+        ${currentLang === 'es' ? '🎨 Demo: Galería Interactiva 3D' : '🎨 Démo: Galerie Interactive 3D'}
+      </h3>
+      <p style="font-size:14px;">
+        ${currentLang === 'es' ? 'Muestra de proyectos con renders 3D integrados directamente en el navegador sin plugins externos.' : 'Échantillon de projets avec rendus 3D intégrés directement dans le navigateur sans plugins externes.'}
+      </p>
+      <div style="padding:20px; border:1px dashed var(--pink); border-radius:10px; background:rgba(255,0,85,0.05);">
+        <p style="font-weight:bold; color:var(--pink);">⚡ [Simulador 3D WebGL Activo]</p>
+        <button class="neon-btn" onclick="alert('${currentLang === 'es' ? 'Cargando modelo 3D...' : 'Chargement du modèle 3D...'}')">
+          ${currentLang === 'es' ? '👁️ Interactuar con Avatar 3D' : '👁️ Interagir avec l\'Avatar 3D'}
+        </button>
+      </div>
+    `;
+  }
+}
+
+// Cargar la demo inicial
+loadDemo('resto');
 </script>
 
 </body>
