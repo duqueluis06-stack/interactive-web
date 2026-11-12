@@ -230,6 +230,23 @@ iframe {
   box-shadow: 0 0 35px #00ff88 !important;
 }
 
+/* =======================
+   BOTÓN COMPRAR PLANTILLA (PAYHIP)
+======================= */
+.buy-template-btn {
+  background: linear-gradient(145deg, #00ff88, #00b359) !important;
+  border: 1px solid var(--green) !important;
+  color: black !important;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4) !important;
+}
+
+.buy-template-btn:hover {
+  background: linear-gradient(145deg, #00ffcc, #009955) !important;
+  box-shadow: 0 0 30px #00ff88 !important;
+  color: black !important;
+}
+
 .analytics-tag {
   font-size: 11px;
   color: var(--cyan);
@@ -257,6 +274,14 @@ iframe {
   <button id="nav-demo" onclick="show('demo', this)">Demos Comerciales</button>
   <button id="nav-levels" onclick="show('levels', this)">Niveles</button>
   <button id="nav-contact" onclick="show('contact', this)">Contacto</button>
+
+  <!-- 🛒 BOTÓN DE COMPRA RÁPIDA EN NAVBAR -->
+  <a class="neon-btn buy-template-btn" 
+     href="https://payhip.com/b/Qlaty" 
+     target="_blank"
+     onclick="trackEvent('click_buy_nav', 'store', 'payhip_link')">
+    🛒 Comprar Plantilla Web
+  </a>
 
   <div class="lang-switch">
     <button class="lang-btn active" onclick="setLang('es')">ES</button>
@@ -317,9 +342,23 @@ iframe {
       <p data-es="Google Maps interactivo, WhatsApp automatizado y menús digitales." data-fr="Google Maps interactif, WhatsApp automatisé et menus numériques.">Google Maps interactivo, WhatsApp automatizado y menús digitales.</p>
     </div>
 
-    <div style="border-left: 3px solid var(--pink); padding-left: 15px;">
+    <div style="border-left: 3px solid var(--pink); padding-left: 15px; margin-bottom: 20px;">
       <h3 data-es="Nivel 3 — Sistemas Dinámicos & Analytics GA4" data-fr="Niveau 3 — Systèmes Dynamiques & GA4">Nivel 3 — Sistemas Dinámicos & Analytics GA4</h3>
       <p data-es="Telemetría de usuarios con Google Analytics 4, componentes 3D e integración de APIs en vivo." data-fr="Télémétrie utilisateur avec Google Analytics 4, composants 3D et intégration d'API en direct.">Telemetría de usuarios con Google Analytics 4, componentes 3D e integración de APIs en vivo.</p>
+    </div>
+
+    <!-- 🌟 LLAMADA A LA ACCIÓN PRINCIPAL PARA COMPRAR LA PLANTILLA -->
+    <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px dashed var(--border);">
+      <p data-es="📦 ¿Te gusta esta estructura? Consigue la Plantilla Web Profesional completa (con código editable y guías en PDF en español)."
+         data-fr="📦 Vous aimez cette structure ? Obtenez le modèle de site web professionnel complet (avec code modifiable et guides PDF en espagnol).">
+        📦 ¿Te gusta esta estructura? Consigue la Plantilla Web Profesional completa (con código editable y guías en PDF en español).
+      </p>
+      <a class="neon-btn buy-template-btn" 
+         href="https://payhip.com/b/Qlaty" 
+         target="_blank"
+         onclick="trackEvent('click_buy_levels', 'store', 'payhip_link')">
+        🚀 Comprar Plantilla Web Profesional (Acceso Inmediato)
+      </a>
     </div>
   </div>
 </div>
